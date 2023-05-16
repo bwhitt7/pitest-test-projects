@@ -1,0 +1,36 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20'
+    id 'application'
+    id 'info.solidsoft.pitest' version '1.9.11'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    //pitest 'org.pitest:pitest-junit5-plugin:1.0.0+'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+application {
+    mainClassName = 'MainKt'
+}
+
+pitest {
+    //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+    junit5PluginVersion = '1.0.0'    //or 0.15 for PIT <1.9.0
+    // ...
+}
